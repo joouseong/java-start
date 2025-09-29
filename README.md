@@ -232,3 +232,316 @@ public class Var8 {
 * `a`, `b`: 이런 변수는 용도 설명 X. 단순 예제에서만 사용 권장
 * `studentCount`, `maxScore`, `userAccount`, `orderCount`: 용도 명확하게 설명
 
+## 9월 29일
+### 연산자
+
+**연산자 종류**
+* 산술 연산자
+* 증감 연산자
+* 비교 연산자
+* 논리 연산자
+* 대입 연산자
+* 삼항 연산자
+
+**연산자와 피연산자**
+> 3 + 4 <br>
+> a + b
+* 연산자: 연산 기호
+* 피연산자: 연산 대상
+
+**산술 연산자**
+```java
+package operator;
+
+public class Operator1 {
+
+    public static void main(String[] args) {
+        //변수 초기화
+        int a = 5;
+        int b = 2;
+
+        // 덧셈
+        int sum = a + b;
+        System.out.println("a + b = " + sum); // 결과: 7
+        // 뺄셈
+        int diff = a - b;
+        System.out.println("a - b = " + diff); // 결과: 3
+        // 곱셈
+        int multi = a * b;
+        System.out.println("a * b = " + multi); // 결과: 10
+        // 나눗셈
+        int div = a / b;
+        System.out.println("a / b = " + div); // 결과: 2
+        // 나머지
+        int mod = a % b;
+        System.out.println("a % b = " + mod); // 결과: 1
+    }
+}
+```
+
+**문자열 더하기**
+```java
+public class Operator2 {
+
+    public static void main(String[] args) {
+        //문자열과 문자열 더하기
+        String result1 = "hello " + "world";
+        System.out.println(result1);
+
+        //문자열과 문자열 더하기2
+        String s1 = "string1";
+        String s2 = "string2";
+        String result2 = s1 + s2;
+        System.out.println(result2);
+
+        //문자열과 숫자 더하기1
+        String result3 = "a + b = " + 10;
+        System.out.println(result3);
+
+        //문자열과 숫자 더하기2
+        int num = 20;
+        String str = "a + b = ";
+        String result4 = str + num;
+        System.out.println(result4);
+    }
+}
+```
+
+**연산자 우선순위**
+```java
+package operator;
+
+public class Operator3 {
+
+    public static void main(String[] args) {
+        int sum1 = 1 + 2 * 3;
+        int sum2 = (1 + 2) * 3;
+
+        System.out.println("sum1 = " + sum1);
+        System.out.println("sum2 = " + sum2);
+    }
+}
+```
+```java
+package operator;
+
+public class Operator4 {
+
+    public static void main(String[] args) {
+        int sum3 = 2 * 2 + 3 * 3;
+        int sum4 = (2 * 2) + 3 * 3; // sum3과 같지만 가독성 up
+        System.out.println("sum3 = " + sum3);
+        System.out.println("sum4 = " + sum4);
+    }
+}
+```
+
+**연산자 우선순위 암기법**
+1. 괄호()
+2. 단항 연산자
+3. 산술 연산자
+4. shift 연산자
+5. 비교 연산자
+6. 등식 연산자
+7. 비트 연산자
+8. 논리 연산자
+9. 삼항 연산자
+10. 대입 연산자
+
+다 외우지 않고 딱 2가지만 기억하기
+1. 상식선에서 우선순위 사용
+2. 애매하면 괄호() 사용
+
+정리
+* 연산자 우선순위는 상식선에서 생각, 애매하면 괄호 사용
+* 복잡하면 명확하게 괄호 사용
+* 개발에서 가장 중요한 것은 단순함과 명확함
+
+**증감 연산자**
+```java
+package operator;
+
+public class OperatorAdd1 {
+
+    public static void main(String[] args) {
+        int a = 0;
+
+        a = a + 1;
+        System.out.println("a = " + a); // 1
+
+        a = a + 1;
+        System.out.println("a = " + a); // 2
+
+        // 증감 연산자
+        ++a; // a = a + 1
+        System.out.println("a = " + a); // 3
+
+        ++a;
+        System.out.println("a = " + a); // 4
+    }
+}
+```
+
+**전위, 후위 증감연산자**
+```java
+package operator;
+
+public class OperatorAdd2 {
+    public static void main(String[] args) {
+        //전위 증감 연산자
+        int a = 1;
+        int b = 0;
+        
+        b = ++a; // a의 값을 먼저 증가시키고(전위), 그 결과를 b에 대입
+        System.out.println("a = " + a + ", b = " + b);
+
+        //후위 증감 연산자
+        a = 1; // a 값 초기화
+        b = 0; // b 값 초기화
+
+        b = a++; // a의 현재 값을 b에 먼저 대입, 그 후 a 값을 증가(후위)
+        System.out.println("a = " + a + ", b = " + b);
+    }
+}
+```
+
+**비교 연산자**
+* `==`: 동등성
+* `!=`: 불일치
+* `>`: 크다
+* `<`: 작다
+* `>=`: 크거나 같다
+* `<=`: 작거나 같다
+
+```java
+package operator;
+
+public class Comp1 {
+    public static void main(String[] args) {
+        int a = 2;
+        int b = 3;
+
+        System.out.println(a == b);
+        System.out.println(a != b);
+        System.out.println(a > b);
+        System.out.println(a < b);
+        System.out.println(a >= b);
+        System.out.println(a <= b);
+
+        // 결과를 boolean 변수에 담을 수 있음
+        boolean result = a == b;
+        System.out.println(result);
+    }
+}
+```
+
+**문자열 비교**
+```java
+package operator;
+
+public class Comp2 {
+  public static void main(String[] args) {
+    String str1 = "문자열1";
+    String str2 = "문자열2"; //ctrl+d 현재 열 복붙 자동
+
+    boolean result1 = "hello".equals("hello"); // 레터럴 비교
+    boolean result2 = str1.equals("문자열1"); // 문자열 변수, 레터럴 비교
+    boolean result3 = str1.equals(str2); // 문자열 변수 비교
+
+    System.out.println(result1);
+    System.out.println(result2);
+    System.out.println(result3); //ctrl+shift+enter 문장 자동완성(; 만들어줌)
+  }
+}
+```
+
+**논리 연산자**
+* `&&`(그리고): 모두 참이면 참, 하나라도 거짓이면 거짓
+* `||`(또는): 하나라도 참이면 참, 둘다 거짓이면 거짓
+* `!`(부정): 참이면 거짓을, 거짓이면 참
+```java
+package operator;
+
+public class Logical1 {
+  public static void main(String[] args) {
+    System.out.println("&&: AND 연산");
+    System.out.println(true && true);
+    System.out.println(true && false);
+    System.out.println(false && false);
+
+    System.out.println("|| OR 연산");
+    System.out.println(true && true);
+    System.out.println(true && false);
+    System.out.println(false && false);
+
+    System.out.println("! 연산");
+    System.out.println(!true);
+    System.out.println(!false);
+
+    System.out.println("변수 활용");
+    boolean a = true;
+    boolean b = false;
+    System.out.println(a && b);
+    System.out.println(a || b);
+    System.out.println(!a);
+    System.out.println(!b);
+  }
+}
+```
+
+**논리 연산자 활용**
+```java
+package operator;
+
+public class Logical2 {
+
+    public static void main(String[] args) {
+        int a = 15;
+        // a는 10보다 크고 20보다 작다
+        boolean result = a > 10 && a < 20; //(a>10)&&(a<20)
+        //boolean result = 10 < a && a < 20; //(a>10)&&(a<20)
+
+        System.out.println("result = " + result);
+    }
+}
+```
+
+**대입 연산자**
+
+축약(복합)대입 연산자
+* `+=`, `-=`, `*=`, `/=`, `%=`
+* `i = i + 3` > `i += 3`
+* `i = i * 4` > `i *= 4`
+```java
+package operator;
+
+public class Assign1 {
+
+  public static void main(String[] args) {
+    int a = 5;
+    a += 3; // 8 ( 5 + 3): a = a + 3
+    a -= 2; // 6 ( 8 - 2): a = a - 2
+    a *= 4; // 25 ( 6 * 4 ): a = a * 4
+    a /= 3; //8 ( 24 / 3): a = a / 3
+    a %= 5; // 3 ( 8 % 5 ): a = a % 5
+    System.out.println(a);
+  }
+} 
+```
+
+**정리**
+
+자주 사용하는 연산자
+* 산술 연산자: `+`, `-`, `*`, `/`, `%`
+* 증감 연산자: `++`, `--`
+* 비교 연산자: `==`, `!=`, `>`, `<`, `>=`, `<=`
+* 논리 연산자: `&&`, `||`, `!`
+* 대입 연산자: `=`, `+=`, `-=`, `*=`, `/=`, `%=`
+
+다음 연산자들도 자주 사용, 뒷 부분에서 학습
+* 삼항 연산자: `? :`
+* instanceof 연산자: 객체 타입 확인
+* etc: `new`, `[]`(배열 인덱스), `.`(객체 멤버 접근), `()`(메소드 호출)
+
+비트 연산자는 실무에서 거의 사용 X
+
