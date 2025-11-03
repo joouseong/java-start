@@ -545,3 +545,210 @@ public class Assign1 {
 
 비트 연산자는 실무에서 거의 사용 X
 
+## 11월 3일
+### if문1 - if, else
+**조건문 시작** <br>
+특정 조건에 따라 다른 코드를 실행하는 것을 조건문이라 함
+조건문에는 if문, switch문이 있음. 둘다 특정 조건에 따라 다른 코드를 실행
+
+**if문** <br>
+조건이 참인지 확인하고, 그 조건이 참일 경우 특정 코드 블록을 실행
+
+```java
+package cond;
+
+public class If1 {
+    public static void main(String[] args) {
+        int age = 20; // 사용자 나이
+
+        if (age >= 18){
+            System.out.println("성인입니다");
+        }
+        if (age < 18){
+            System.out.println("미성년자입니다");
+        }
+    }
+}
+```
+
+**else문** <br>
+if문에서 만족하는 조건이 없을 때 실행하는 코드를 제공
+```java
+package cond;
+
+public class If2 {
+    public static void main(String[] args) {
+        int age = 20;
+
+        if(age >= 18){
+            System.out.println("성인입니다");
+        } else {
+            System.out.println("미성년자입니다");
+        }
+    }
+}
+```
+
+### if문2 - else if
+```java
+package cond;
+
+public class If3 {
+    public static void main(String[] args) {
+        int age = 14;
+
+        if(age <= 7){
+            System.out.println("미취학");
+        }
+        if(age >= 8 && age <= 13){
+            System.out.println("초등학생");
+        }
+        if(age >= 14 && age <= 16){
+            System.out.println("중학생");
+        }
+        if(age >= 17 && age <= 19){
+            System.out.println("고등학생");
+        }
+        if(age >= 20){
+            System.out.println("성인");
+        }
+    }
+}
+```
+위 코드는 불필요한 조건 검사를 진행하고있고, 코드 효율성이 매우 떨어진다. <br>
+이러한 코드에 else if 문을 사용하여 효율적으로 코드 작성 가능
+
+**else if** <br>
+앞선 if문의 조건이 거짓일 때 다음 조건을 검사
+```java
+package cond;
+
+public class If4 {
+    public static void main(String[] args) {
+        int age = 23;
+        
+        if(age <= 7){
+            System.out.println("미취학");
+        } else if (age <= 13) {
+            System.out.println("초등학생");
+        } else if (age <= 16) {
+            System.out.println("중학생");
+        } else if (age <= 19) {
+            System.out.println("고등학생");
+        } else {
+            System.out.println("성인");
+        }
+    }
+}
+```
+
+### if문3 - if문과 else if문
+if문에 else-if를 함게 사용하는 것은 서로 연관된 조건일 때 사용 <br>
+but 서로 관련없는 독립 조건이면 if문을 각각 따로 사용해야 함
+```java
+package cond;
+
+public class If5 {
+    public static void main(String[] args) {
+        int price = 10000; // 아이템 가격
+        int age = 10; //나이
+        int discount = 0;
+
+        if(price >= 10000){
+            discount = discount + 1000;
+            System.out.println("10000원 이상 구매, 1000원 할인");
+        }
+        if (age <= 10){
+            discount = discount + 1000;
+            System.out.println("어린이 1000원 할인");
+        }
+        System.out.println("총 할인 금액: " + discount + "원");
+    }
+}
+```
+만약 else if문을 사용하면, 선행되는 if문이 이미 조건이 만족하여 if문을 빠져나오게 됨
+
+### switch문
+```java
+package cond;
+
+public class Switch1 {
+    public static void main(String[] args) {
+        int grade = 2;
+
+        int coupon;
+        if (grade == 1){
+            coupon = 1000;
+        } else if (grade == 2) {
+            coupon = 2000;
+        } else if (grade == 3) {
+            coupon = 3000;
+        } else {
+            coupon = 500;
+        }
+
+        System.out.println("발급받은 쿠폰은 " + coupon);
+    }
+}
+```
+위와 같은 코드를 switch문을 사용하여 더 편리하게 사용할 수 있음
+참고로 if문은 비교 연산자를 사용할 수 있지만, switch문은 단순히 값이 같은지만 비교
+* 조건식의 결과 값이 어떤 `case`의 값과 깅ㄹ치하면 해당 `case`의 코드를 실행
+* `break`문은 현재 실행 중인 코드를 끝내고 `switch`문을 빠져나가게 하는 역할
+* 만약 `break`문이 없으면, 일치하는 `case`이후의 모든 `case`코드들이 순서대로 실행
+* `default`는 조건식의 결과값이 모든 `case`의 값과 일치하지 않을 때 실행. if문의 else와 같음
+* if, else-if, else 구조와 같음
+```java
+package cond;
+
+public class Switch2 {
+    public static void main(String[] args) {
+        int grade = 2;
+
+        int coupon;
+        switch (grade){
+            case 1:
+                coupon = 1000;
+                break;
+            case 2:
+                coupon = 2000;
+                break;
+            case 3:
+                coupon = 3000;
+                break;
+            default:
+                coupon = 500;
+        }
+        System.out.println("발급받은 쿠폰 " + coupon);
+    }
+}
+```
+
+**break문이 없으면?**
+```java
+package cond;
+
+public class Switch3 {
+    public static void main(String[] args) {
+        int grade = 2;
+
+        int coupon;
+        switch (grade){
+            case 1:
+                coupon = 1000;
+                break;
+            case 2:
+            case 3:
+                coupon = 3000;
+                break;
+            default:
+                coupon = 500;
+        }
+        System.out.println("발급받은 쿠폰 " + coupon);
+    }
+}
+```
+* grade가 2등급 -> 먼저 case2 실행
+* but case2 에는 `break`문이 없어, 중단하지 않고 바로 다음에 있는 case3의 코드 실행
+* `"발급받은 쿠폰 3000"`이 출력
+
