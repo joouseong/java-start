@@ -752,3 +752,63 @@ public class Switch3 {
 * but case2 에는 `break`문이 없어, 중단하지 않고 바로 다음에 있는 case3의 코드 실행
 * `"발급받은 쿠폰 3000"`이 출력
 
+**if문 vs switch문** <br>
+switch는 참 거짓의 결과나 나오는 조건이 아닌, 단순 값만 가능
+switch문은 조건식이 특정 case와 같은지만 체크, 쉽게 말해 값이 같은지만 확인하는 연산만 가능(문자도 가능)
+but if문은 참 거짓의 결과가 나오는 조건식을 자유롭게 적을 수 있음
+
+**자바 14 새로운 switch문** <br>
+잘 사용하진 않지만 자바14부터 새로운 switch 문이 정식 도입
+```java
+package cond;
+
+public class Switch4 {
+    public static void main(String[] args) {
+        int grade = 2;
+
+        int coupon = switch (grade){
+            case 1 -> 1000;
+            case 2 -> 2000;
+            case 3 -> 3000;
+            default -> 500;
+        };
+        System.out.println("발급받은 쿠폰" + coupon);
+    }
+}
+```
+
+### 삼항 연산자
+```java
+package cond;
+
+public class CondOp1 {
+    public static void main(String[] args) {
+        int age = 18;
+        String status;
+        if(age >= 18){
+            status = "성인";
+        } else {
+            status = "미성년자";
+        }
+        System.out.println("age = " + age + " status = " + status);
+    }
+}
+```
+위 코드는 참과 거짓에 따라 `status` 변수의 값이 달라짐
+단순히 참과 거짓에 따라 특정 값을 구하는 경우 **삼항 연산자** 또는 **조건 연산자**라고 불리는 `?:`연산자 사용 가능
+
+```java
+package cond;
+
+public class CondOp2 {
+    public static void main(String[] args) {
+        int age = 18;
+        String status = (age >= 18) ? "성인" : "미성년자";
+
+        System.out.println("age = " + age + " status = " + status);
+    }
+}
+```
+* `조건`,`참_표현식`, `거짓_표현식` 이렇게 항이 3개
+* if문처럼 코드 블럭을 넣을 수 있는 것이 아니라 단순한 표현식만 넣을 수 있음
+
